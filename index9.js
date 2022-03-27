@@ -114,4 +114,7 @@ const result = () => {
     alert(`Số điểm bạn đạt được là ${total}`)
 }
 
-const showPoin = setTimeout(result,10100)
+const showPoin = setTimeout(() => {
+    result();
+    clearInterval(bar1Run)
+},10100)
