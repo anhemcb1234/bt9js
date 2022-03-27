@@ -69,8 +69,8 @@ function incrementSeconds() {
     tooltiptext.innerHTML = `${bar1R/20} Giây`
     if (bar1R === 100) {
         bar1R = 0
+        fal++
     }
-    console.log(test.childNodes[1])
 }
 
 let bar1Run = setInterval(incrementSeconds, 1000);
@@ -99,6 +99,7 @@ const checkAnswer = () => {
 }
 const run = () => {
     checkAnswer()
+    clearInterval(myTime)
 }
 const myTime = setTimeout(run, 100)
 
