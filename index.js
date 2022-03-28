@@ -49,7 +49,7 @@ let total = 0;
 let fal = 1;
 let bar1R = 0;
 let bar2R = 0;
-let timer = 11000;
+let timer = 10000;
 const question = questions.map(x => {return `<p correct="${x.id}">${x.question}</p> ${x.answers.map(x => {return `<li correct="${x.correct}">${x.text}</li>`})}`});
 const questionContent = questions.map((x, index) => {return `<p id="${x.id}">Câu ${index+1}: ${x.question}</p>`})
 const answersContent = questions.map(x => {return `${x.answers.map(x => {return `<button class="col-5 m-3  rounded mt-3" correct="${x.correct}">${x.text}</button>`})}`});
