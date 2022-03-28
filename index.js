@@ -46,7 +46,7 @@ const questions = [
 ]
 
 let total = 0;
-let fal = 0;
+let fal = 1;
 let bar1R = 0;
 let bar2R = 0;
 let timer = 11000;
@@ -71,20 +71,16 @@ const testHihi = questions.map(x => x.answers.filter(x => x.correct ===true));
 
 const allAnswers = []
 
-const showPoin = setTimeout(() => {
-    result();
-    clearInterval(bar1Run)
-},timer)
 function incrementSeconds() {
     bar1R += 20;
+    bar2R = 100
     bar2.style.width = `${bar1R}%`
     tooltiptext.innerHTML = `${bar1R/20} Giây`
     if (bar1R === 100) {
         bar1R = 0
-        fal + 2
+        fal++
     }
 }
-
 let bar1Run = setInterval(incrementSeconds, 1000);
 
 console.log(timer)
@@ -105,7 +101,6 @@ const checkAnswer = () => {
             } 
         })
     }
-console.log(fal)
 
     if(fal === 2) {
         clearInterval(bar1Run)
@@ -133,8 +128,13 @@ const result = () => {
     }
     show.innerHTML = `Số điểm bạn đạt được là <strong>${total}</strong>
     <br>Các đáp án đúng trong bài test: `;
-        for(let i = testHihi.length -1 ; i >= 0 ; i--) {
-            haha.insertAdjacentHTML("afterend",`<br>Câu ${i + 1}: <strong>${testHihi[i][0].text}</strong> `)
+    for(let i = testHihi.length -1 ; i >= 0 ; i--) {
+        haha.insertAdjacentHTML("afterend",`<br>Câu ${i + 1}: <strong>${testHihi[i][0].text}</strong> `)
         }
     }
+    
 
+    const showPoin = setTimeout(() => {
+        result();
+        clearInterval(bar1Run)
+    },timer)
