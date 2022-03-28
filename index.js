@@ -46,10 +46,10 @@ const questions = [
 ]
 
 let total = 0;
-let fal = 1;
+let fal = 0;
 let bar1R = 0;
 let bar2R = 0;
-
+let timer = 11000;
 const question = questions.map(x => {return `<p correct="${x.id}">${x.question}</p> ${x.answers.map(x => {return `<li correct="${x.correct}">${x.text}</li>`})}`});
 const questionContent = questions.map((x, index) => {return `<p id="${x.id}">Câu ${index+1}: ${x.question}</p>`})
 const answersContent = questions.map(x => {return `${x.answers.map(x => {return `<button class="col-5 m-3  rounded mt-3" correct="${x.correct}">${x.text}</button>`})}`});
@@ -71,19 +71,23 @@ const testHihi = questions.map(x => x.answers.filter(x => x.correct ===true));
 
 const allAnswers = []
 
+const showPoin = setTimeout(() => {
+    result();
+    clearInterval(bar1Run)
+},timer)
 function incrementSeconds() {
     bar1R += 20;
     bar2.style.width = `${bar1R}%`
     tooltiptext.innerHTML = `${bar1R/20} Giây`
     if (bar1R === 100) {
         bar1R = 0
-        fal++
+        fal + 2
     }
 }
 
 let bar1Run = setInterval(incrementSeconds, 1000);
 
-
+console.log(timer)
 const checkAnswer = () => {
     for(let i = 0; i < test.childNodes.length; i++) {
         test.childNodes[i].addEventListener("click", () => {
@@ -94,13 +98,15 @@ const checkAnswer = () => {
                 allAnswers.push(test.childNodes[i].innerText)
                 fal++
             } else if(test.childNodes[i].getAttribute("correct") === "false") {
-                bar1R = 0
+                bar1R = 0;
                 myGreeting();
                 allAnswers.push(test.childNodes[i].innerText)
                 fal++
             } 
         })
     }
+console.log(fal)
+
     if(fal === 2) {
         clearInterval(bar1Run)
         clearTimeout(showPoin)
@@ -132,7 +138,3 @@ const result = () => {
         }
     }
 
-const showPoin = setTimeout(() => {
-    result();
-    clearInterval(bar1Run)
-},10100)
