@@ -87,14 +87,13 @@ console.log(timer)
 const checkAnswer = () => {
     for(let i = 0; i < test.childNodes.length; i++) {
         test.childNodes[i].addEventListener("click", () => {
+            bar1R = 0
             if(test.childNodes[i].getAttribute("correct") === "true") {
-                bar1R = 0
                 ponit.innerHTML = total += 10;
                 myGreeting();
                 allAnswers.push(test.childNodes[i].innerText)
                 fal++
             } else if(test.childNodes[i].getAttribute("correct") === "false") {
-                bar1R = 0;
                 myGreeting();
                 allAnswers.push(test.childNodes[i].innerText)
                 fal++
