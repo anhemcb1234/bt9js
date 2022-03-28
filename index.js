@@ -128,7 +128,7 @@ const result = () => {
     show.innerHTML = `Số điểm bạn đạt được là <strong>${total}</strong>
     <br>Các đáp án đúng trong bài test: `;
         for(let i = testHihi.length -1 ; i >= 0 ; i--) {
-            haha.insertAdjacentHTML("afterend",`Câu ${i + 1}: <strong>${testHihi[i][0].text}</strong> `)
+            haha.insertAdjacentHTML("afterend",`<br>Câu ${i + 1}: <strong>${testHihi[i][0].text}</strong> `)
         }
     }
 
