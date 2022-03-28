@@ -62,6 +62,14 @@ const myTimeout = setTimeout(myGreeting, 5000);
 const bar1 = document.querySelector(".bar1")
 const bar2 = document.querySelector(".bar2")
 const tooltiptext = document.querySelector(".tooltiptext")
+const resultq = questions.map((x, index) => {return `<p>Đáp án câu ${index+1} là ${x.answers.filter(x => x.correct === true)}<p>`})
+const show = document.querySelector(".show")
+const hihi = document.querySelectorAll(".hihi")
+const node = document.createElement("button");
+const haha = document.querySelector(".haha")
+const testHihi = questions.map(x => x.answers.filter(x => x.correct ===true));
+
+const allAnswers = []
 
 function incrementSeconds() {
     bar1R += 20;
@@ -83,18 +91,20 @@ const checkAnswer = () => {
                 bar1R = 0
                 ponit.innerHTML = total += 10;
                 myGreeting();
+                allAnswers.push(test.childNodes[i].innerText)
                 fal++
             } else if(test.childNodes[i].getAttribute("correct") === "false") {
                 bar1R = 0
                 myGreeting();
+                allAnswers.push(test.childNodes[i].innerText)
                 fal++
             } 
         })
     }
     if(fal >= 2) {
-        result();
         clearInterval(bar1Run)
         clearTimeout(showPoin)
+        result();
     }
 }
 const run = () => {
@@ -112,8 +122,15 @@ function myGreeting() {
 }
 
 const result = () => {
-    alert(`Số điểm bạn đạt được là ${total}`)
-}
+    for(let i = 0; i < hihi.length; i++) {
+        hihi[i].classList.add("hihis")
+    }
+    show.innerHTML = `Số điểm bạn đạt được là <strong>${total}</strong>
+    <br>Các đáp án đúng trong bài test: `;
+        for(let i = testHihi.length -1 ; i >= 0 ; i--) {
+            haha.insertAdjacentHTML("afterend",`Câu ${i + 1}: <strong>${testHihi[i][0].text}</strong> `)
+        }
+    }
 
 const showPoin = setTimeout(() => {
     result();

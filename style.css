@@ -87,3 +87,9 @@ h2 {
 button:hover {
     opacity: 0.8;
 }
+.hide {
+  display: none;
+}
+.hihis {
+  display: none !important;
+}
