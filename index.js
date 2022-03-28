@@ -101,7 +101,7 @@ const checkAnswer = () => {
             } 
         })
     }
-    if(fal >= 2) {
+    if(fal === 2) {
         clearInterval(bar1Run)
         clearTimeout(showPoin)
         result();
